@@ -32,8 +32,6 @@
   "system": [],
   "dependencies": [],
   "socket": false,
-  "manifest": "",
-  "download": "",
   "protected": false,
   "coreTranslation": false,
   "documentTypes": {
@@ -58,5 +56,8 @@
     "units": "m"
   },
   "primaryTokenAttribute": "ev",
-  "secondaryTokenAttribute": "reputation"
+  "secondaryTokenAttribute": "reputation",
+  "url": "https://github.com/Florleseige/foundry-system-univers-bastard",
+  "manifest": "https://github.com/Florleseige/foundry-system-univers-bastard/releases/download/1.0.0/system.json",
+  "download": "https://github.com/Florleseige/foundry-system-univers-bastard/releases/download/1.0.0/system.zip"
 }
