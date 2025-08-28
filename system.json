@@ -1,0 +1,62 @@
+{
+  "id": "univers-bastard",
+  "title": "Univers Bastard",
+  "description": "Un système de jeu pour Foundry VTT basé sur Univers Bastard, où vous incarnez des bâtards interstellaires dans un vaste tas d'ordures galactique.",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "12"
+  },
+  "authors": [
+    {
+      "name": "Aymeric et Jean",
+      "discord": "",
+      "flags": {}
+    }
+  ],
+  "scripts": [],
+  "esmodules": [
+    "module/univers-bastard.mjs"
+  ],
+  "styles": [
+    "css/univers-bastard.css"
+  ],
+  "languages": [
+    {
+      "lang": "fr",
+      "name": "Français",
+      "path": "lang/fr.json"
+    }
+  ],
+  "packs": [],
+  "system": [],
+  "dependencies": [],
+  "socket": false,
+  "manifest": "",
+  "download": "",
+  "protected": false,
+  "coreTranslation": false,
+  "documentTypes": {
+    "Actor": {
+      "personnage": {},
+      "pnj": {},
+      "vaisseau": {}
+    },
+    "Item": {
+      "arme": {},
+      "armure": {},
+      "module": {},
+      "equipement": {},
+      "espece": {},
+      "metier": {},
+      "handicap": {},
+      "capacite": {}
+    }
+  },
+  "grid": {
+    "distance": 2,
+    "units": "m"
+  },
+  "primaryTokenAttribute": "ev",
+  "secondaryTokenAttribute": "reputation"
+}

@@ -1,0 +1,183 @@
+{
+  "UB": {
+    "Hello": "Salut, bande de déchets galactiques !",
+    
+    "ActorTypes": {
+      "personnage": "Personnage",
+      "pnj": "PNJ",
+      "vaisseau": "Vaisseau"
+    },
+    
+    "ItemTypes": {
+      "arme": "Arme",
+      "armure": "Armure", 
+      "module": "Module",
+      "equipement": "Équipement",
+      "espece": "Espèce",
+      "metier": "Métier",
+      "handicap": "Handicap",
+      "capacite": "Capacité"
+    },
+
+    "Attributs": {
+      "violence": "Violence",
+      "corps": "Corps",
+      "adresse": "Adresse", 
+      "charisme": "Charisme",
+      "mental": "Mental",
+      "instinct": "Instinct"
+    },
+
+    "Caracteristiques": {
+      "ev": "Énergie Vitale",
+      "reputation": "Réputation",
+      "niveau": "Niveau",
+      "credits": "Crédits",
+      "adrenalina": "Adrénaline"
+    },
+
+    "Etats": {
+      "pleineFormee": "Pleine forme",
+      "legerementBlesse": "Légèrement blessé",
+      "blesse": "Blessé",
+      "grievementBlesse": "Grièvement blessé",
+      "mort": "Mort"
+    },
+
+    "Portees": {
+      "Contact": "Contact",
+      "Courte": "Courte",
+      "Moyenne": "Moyenne", 
+      "Longue": "Longue",
+      "Lointaine": "Lointaine"
+    },
+
+    "TypesDegats": {
+      "Cinetique": "Cinétique (C)",
+      "Plasma": "Plasma (P)",
+      "Laser": "Laser (L)"
+    },
+
+    "Categories": {
+      "legere": "Légère",
+      "intermediaire": "Intermédiaire",
+      "lourde": "Lourde"
+    },
+
+    "Modules": {
+      "Passif": "Passif",
+      "Actif": "Actif",
+      "Arme": "Arme", 
+      "Armure": "Armure",
+      "Vaisseau": "Vaisseau"
+    },
+
+    "Biomes": {
+      "Tempere": "Tempéré",
+      "Tropical": "Tropical",
+      "Oceanique": "Océanique",
+      "Volcanique": "Volcanique"
+    },
+
+    "Especes": {
+      "gwoozhis": "Gwoozhis",
+      "legarians": "Légarians", 
+      "atlanteens": "Atlantéens",
+      "malharis": "Malharis",
+      "rokkar": "Rokkar",
+      "ptolemiens": "Ptolémiens",
+      "numeriens": "Numériens",
+      "automates": "Automates"
+    },
+
+    "Metiers": {
+      "archiviste": "Archiviste",
+      "agentFurtif": "Agent Furtif",
+      "chevalier": "Chevalier de Gelleïne", 
+      "pilote": "Pilote",
+      "tech": "Tech",
+      "medecin": "Médecin",
+      "soldat": "Soldat"
+    },
+
+    "Specialisations": {
+      "diplomate": "Diplomate",
+      "chercheur": "Chercheur",
+      "assassin": "Assassin",
+      "espion": "Espion", 
+      "racer": "Racer",
+      "contrebandier": "Contrebandier",
+      "mecanicien": "Mécanicien",
+      "hacker": "Hacker",
+      "chirurgien": "Chirurgien",
+      "infirmier": "Infirmier",
+      "commando": "Commando", 
+      "artilleur": "Artilleur",
+      "sentinelle": "Sentinelle",
+      "executeur": "Exécuteur"
+    },
+
+    "Motivations": {
+      "richesse": "La richesse à tout prix",
+      "vengeance": "La vengeance",
+      "pouvoir": "Le pouvoir absolu",
+      "redemption": "La rédemption",
+      "liberte": "La liberté", 
+      "connaissance": "La connaissance ultime",
+      "survie": "La survie pure et simple",
+      "honneur": "L'honneur ou la gloire",
+      "amour": "L'amour ou la loyauté"
+    },
+
+    "Vaisseau": {
+      "pc": "Points de Coque",
+      "pe": "Points d'Énergie", 
+      "boucliers": "Boucliers",
+      "maniabilite": "Maniabilité",
+      "vitesse": "Vitesse",
+      "equipage": "Équipage"
+    },
+
+    "Actions": {
+      "roll": "Lancer les dés",
+      "attack": "Attaquer",
+      "edit": "Éditer",
+      "delete": "Supprimer", 
+      "create": "Créer"
+    },
+
+    "Effects": {
+      "Temporary": "Temporaires",
+      "Passive": "Passifs",
+      "Inactive": "Inactifs"
+    },
+
+    "SheetLabels": {
+      "Actor": "Feuille d'Acteur Univers Bastard",
+      "Item": "Feuille d'Objet Univers Bastard"
+    },
+
+    "Tabs": {
+      "caracteristiques": "Caractéristiques",
+      "equipement": "Équipement", 
+      "capacites": "Capacités",
+      "biographie": "Biographie",
+      "description": "Description",
+      "details": "Détails"
+    },
+
+    "Dice": {
+      "rollFormula": "2d10 + {mod}",
+      "echec-total": "Échec Total (2-6)",
+      "echec-positif": "Échec avec conséquence positive (7-10)",
+      "reussite-negative": "Réussite avec conséquence négative (11-15)", 
+      "reussite-totale": "Réussite Totale (16-20)"
+    },
+
+    "Chat": {
+      "rollAttribute": "Test de {attribute}",
+      "weaponAttack": "Attaque avec {weapon}",
+      "damage": "Dégâts de {weapon}"
+    }
+  }
+}

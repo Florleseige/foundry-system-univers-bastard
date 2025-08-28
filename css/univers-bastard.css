@@ -1,0 +1,405 @@
+/* ================================================== */
+/*  Univers Bastard System Styles                    */
+/* ================================================== */
+
+.univers-bastard {
+  --color-primary: #1a1a1a;
+  --color-secondary: #2a2a2a;
+  --color-accent: #ff6b35;
+  --color-success: #00b894;
+  --color-warning: #fdcb6e;
+  --color-danger: #e17055;
+  --color-text: #ffffff;
+  --color-text-light: #cccccc;
+  --color-background: #0f0f0f;
+  --color-border: #444444;
+  
+  background: var(--color-background);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.univers-bastard .window-content {
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+.univers-bastard .sheet-header {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  border-bottom: 2px solid var(--color-accent);
+  padding: 10px;
+}
+
+.univers-bastard .sheet-tabs {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.univers-bastard .sheet-tabs .item {
+  background: var(--color-secondary);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-light);
+  margin-right: 2px;
+}
+
+.univers-bastard .sheet-tabs .item.active {
+  background: var(--color-accent);
+  color: var(--color-text);
+  border-color: var(--color-accent);
+}
+
+/* ================================================== */
+/*  Attributes Grid                                   */
+/* ================================================== */
+
+.attributes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.attribute-box {
+  background: var(--color-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 10px;
+  text-align: center;
+}
+
+.attribute-box label {
+  font-weight: bold;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.attribute-box input {
+  background: var(--color-primary);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  text-align: center;
+  width: 60px;
+  height: 30px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.attribute-box .rollable {
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 3px;
+  transition: background-color 0.2s;
+}
+
+.attribute-box .rollable:hover {
+  background: var(--color-accent);
+}
+
+/* ================================================== */
+/*  Health and Reputation Bars                       */
+/* ================================================== */
+
+.resource-bar {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.resource-bar label {
+  min-width: 80px;
+  font-weight: bold;
+  color: var(--color-accent);
+}
+
+.resource-bar input {
+  background: var(--color-primary);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  width: 50px;
+  text-align: center;
+  margin: 0 5px;
+}
+
+.health-bar {
+  flex: 1;
+  height: 20px;
+  background: var(--color-primary);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-left: 10px;
+}
+
+.health-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-success), var(--color-warning), var(--color-danger));
+  transition: width 0.3s ease;
+}
+
+/* ================================================== */
+/*  Item Lists                                        */
+/* ================================================== */
+
+.items-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.items-list .item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.items-list .item {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-secondary);
+  margin-bottom: 2px;
+}
+
+.items-list .item:hover {
+  background: var(--color-primary);
+}
+
+.items-list .item-name {
+  flex: 2;
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.items-list .item-controls {
+  display: flex;
+  flex: 0 0 100px;
+  justify-content: flex-end;
+}
+
+.items-list .item-image {
+  flex: 0 0 30px;
+  height: 30px;
+  background-size: cover;
+  border: none;
+  border-radius: 3px;
+}
+
+/* ================================================== */
+/*  Weapon and Equipment Styles                      */
+/* ================================================== */
+
+.weapon-stats {
+  display: flex;
+  gap: 10px;
+  font-size: 0.9em;
+  color: var(--color-text-light);
+}
+
+.weapon-stats .stat {
+  background: var(--color-primary);
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid var(--color-border);
+}
+
+.weapon-attack {
+  background: var(--color-danger);
+  border: 1px solid var(--color-danger);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.8em;
+}
+
+.weapon-attack:hover {
+  background: #c0392b;
+}
+
+/* ================================================== */
+/*  Buttons and Controls                              */
+/* ================================================== */
+
+.univers-bastard button {
+  background: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.univers-bastard button:hover {
+  background: #e55a2b;
+  border-color: #e55a2b;
+}
+
+.univers-bastard button:disabled {
+  background: var(--color-border);
+  border-color: var(--color-border);
+  color: var(--color-text-light);
+  cursor: not-allowed;
+}
+
+.rollable {
+  cursor: pointer;
+}
+
+.rollable:hover {
+  text-shadow: 0 0 10px var(--color-accent);
+}
+
+/* ================================================== */
+/*  Chat Messages                                     */
+/* ================================================== */
+
+.chat-message .message-content .dice-roll .dice-result {
+  border: 1px solid var(--color-border);
+  background: var(--color-secondary);
+}
+
+.chat-message .univers-bastard-roll {
+  border-left: 3px solid var(--color-accent);
+  padding-left: 8px;
+}
+
+.chat-message .reussite-totale {
+  border-left-color: var(--color-success);
+  background: rgba(0, 184, 148, 0.1);
+}
+
+.chat-message .reussite-negative {
+  border-left-color: var(--color-warning);
+  background: rgba(253, 203, 110, 0.1);
+}
+
+.chat-message .echec-positif {
+  border-left-color: var(--color-warning);
+  background: rgba(253, 203, 110, 0.1);
+}
+
+.chat-message .echec-total {
+  border-left-color: var(--color-danger);
+  background: rgba(225, 112, 85, 0.1);
+}
+
+/* ================================================== */
+/*  Ship Sheets                                       */
+/* ================================================== */
+
+.ship-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin: 15px 0;
+}
+
+.ship-stat {
+  background: var(--color-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.ship-stat label {
+  font-weight: bold;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.ship-modules {
+  margin-top: 10px;
+}
+
+.module-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+/* ================================================== */
+/*  Forms and Inputs                                  */
+/* ================================================== */
+
+.univers-bastard input[type="text"],
+.univers-bastard input[type="number"],
+.univers-bastard select,
+.univers-bastard textarea {
+  background: var(--color-primary);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+
+.univers-bastard input[type="text"]:focus,
+.univers-bastard input[type="number"]:focus,
+.univers-bastard select:focus,
+.univers-bastard textarea:focus {
+  border-color: var(--color-accent);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.2);
+}
+
+.univers-bastard input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* ================================================== */
+/*  Flexbox Utilities                                 */
+/* ================================================== */
+
+.flex-group-center,
+.flex-group-left,
+.flex-group-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.flex-group-left {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.flex-group-right {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.flexcol {
+  display: flex;
+  flex-direction: column;
+}
+
+.flexrow {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-between {
+  justify-content: space-between;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+/* ================================================== */
+/*  Responsive Design                                 */
+/* ================================================== */
+
+@media (max-width: 700px) {
+  .attributes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .ship-stats {
+    grid-template-columns: 1fr;
+  }
+}

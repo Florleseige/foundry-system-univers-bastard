@@ -1,0 +1,284 @@
+<form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
+
+  {{!-- Sheet Header --}}
+  <header class="sheet-header">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Nom du personnage"/></h1>
+      <div class="flexrow">
+        <div class="resource flexcol">
+          <label for="system.espece" class="resource-label">{{localize "UB.ItemTypes.espece"}}</label>
+          <input type="text" name="system.espece" value="{{system.espece}}" data-dtype="String"/>
+        </div>
+        <div class="resource flexcol">
+          <label for="system.metier" class="resource-label">{{localize "UB.ItemTypes.metier"}}</label>
+          <input type="text" name="system.metier" value="{{system.metier}}" data-dtype="String"/>
+        </div>
+        <div class="resource flexcol">
+          <label for="system.niveau" class="resource-label">{{localize "UB.Caracteristiques.niveau"}}</label>
+          <input type="text" name="system.niveau" value="{{system.niveau}}" data-dtype="Number" readonly/>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="caracteristiques">{{localize "UB.Tabs.caracteristiques"}}</a>
+    <a class="item" data-tab="equipement">{{localize "UB.Tabs.equipement"}}</a>
+    <a class="item" data-tab="capacites">{{localize "UB.Tabs.capacites"}}</a>
+    <a class="item" data-tab="biographie">{{localize "UB.Tabs.biographie"}}</a>
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+
+    {{!-- Caractéristiques Tab --}}
+    <div class="tab caracteristiques" data-group="primary" data-tab="caracteristiques">
+      
+      {{!-- Ressources vitales --}}
+      <div class="resources">
+        <div class="resource-bar">
+          <label for="system.ev.value">{{localize "UB.Caracteristiques.ev"}}:</label>
+          <input type="number" name="system.ev.value" value="{{system.ev.value}}" data-dtype="Number" min="0" max="{{system.ev.max}}"/>
+          <span>/</span>
+          <input type="number" name="system.ev.max" value="{{system.ev.max}}" data-dtype="Number" min="1"/>
+          <div class="health-bar">
+            <div class="health-fill" style="width: {{multiply (divide system.ev.value system.ev.max) 100}}%"></div>
+          </div>
+        </div>
+        
+        <div class="resource-bar">
+          <label for="system.reputation.value">{{localize "UB.Caracteristiques.reputation"}}:</label>
+          <input type="number" name="system.reputation.value" value="{{system.reputation.value}}" data-dtype="Number" min="0"/>
+          <span>/</span>
+          <input type="number" name="system.reputation.max" value="{{system.reputation.max}}" data-dtype="Number" min="0"/>
+        </div>
+
+        <div class="resource-bar">
+          <label for="system.credits">{{localize "UB.Caracteristiques.credits"}}:</label>
+          <input type="number" name="system.credits" value="{{system.credits}}" data-dtype="Number" min="0"/>
+        </div>
+
+        <div class="resource-bar">
+          <label for="system.adrenaline.max">{{localize "UB.Caracteristiques.adrenalina"}}:</label>
+          <input type="number" name="system.adrenaline.max" value="{{system.adrenaline.max}}" data-dtype="Number" min="1" max="5"/>
+        </div>
+      </div>
+
+      {{!-- Attributs --}}
+      <div class="attributes-grid">
+        {{#each system.attributs as |attribute key|}}
+        <div class="attribute-box">
+          <label for="system.attributs.{{key}}.value">{{localize (concat "UB.Attributs." key)}}</label>
+          <input type="number" name="system.attributs.{{key}}.value" value="{{attribute.value}}" data-dtype="Number" min="-3" max="3"/>
+          <div class="rollable attribute-roll" data-attribute="{{key}}">
+            <i class="fas fa-dice-d20"></i>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+
+      {{!-- Malus de blessures --}}
+      {{#if system.malus}}
+      <div class="wound-penalties">
+        <label>Malus de blessures: {{system.malus}}</label>
+      </div>
+      {{/if}}
+
+      {{!-- Handicaps --}}
+      <div class="handicaps">
+        <h3>{{localize "UB.ItemTypes.handicap"}}</h3>
+        <textarea name="system.handicaps" rows="3">{{system.handicaps}}</textarea>
+      </div>
+
+      {{!-- Motivation --}}
+      <div class="motivation">
+        <h3>Motivation</h3>
+        <textarea name="system.motivation" rows="2">{{system.motivation}}</textarea>
+      </div>
+    </div>
+
+    {{!-- Équipement Tab --}}
+    <div class="tab equipement" data-group="primary" data-tab="equipement">
+      
+      {{!-- Armes --}}
+      <div class="items-section">
+        <header class="items-header">
+          <h3>{{localize "UB.ItemTypes.arme"}}</h3>
+          <a class="item-control item-create" data-type="arme" title="Créer une arme">
+            <i class="fas fa-plus"></i>
+          </a>
+        </header>
+        
+        <ol class="items-list">
+          {{#each armes as |item id|}}
+          <li class="item flexrow" data-item-id="{{item._id}}">
+            <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
+            <h4 class="item-name">{{item.name}}</h4>
+            <div class="weapon-stats">
+              <span class="stat">{{item.system.degats}} {{item.system.typeDegats}}</span>
+              <span class="stat">{{localize (concat "UB.Portees." item.system.portee)}}</span>
+            </div>
+            <div class="item-controls">
+              <a class="item-control weapon-attack" title="Attaquer">
+                <i class="fas fa-sword"></i>
+              </a>
+              <a class="item-control item-edit" title="Éditer">
+                <i class="fas fa-edit"></i>
+              </a>
+              <a class="item-control item-delete" title="Supprimer">
+                <i class="fas fa-trash"></i>
+              </a>
+            </div>
+          </li>
+          {{/each}}
+        </ol>
+      </div>
+
+      {{!-- Armures --}}
+      <div class="items-section">
+        <header class="items-header">
+          <h3>{{localize "UB.ItemTypes.armure"}}</h3>
+          <a class="item-control item-create" data-type="armure" title="Créer une armure">
+            <i class="fas fa-plus"></i>
+          </a>
+        </header>
+        
+        <ol class="items-list">
+          {{#each armures as |item id|}}
+          <li class="item flexrow" data-item-id="{{item._id}}">
+            <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
+            <h4 class="item-name">{{item.name}}</h4>
+            <div class="armor-stats">
+              <span class="stat">C:{{item.system.protection.cinetique}}</span>
+              <span class="stat">P:{{item.system.protection.plasma}}</span>
+              <span class="stat">L:{{item.system.protection.laser}}</span>
+            </div>
+            <div class="item-controls">
+              <a class="item-control item-edit" title="Éditer">
+                <i class="fas fa-edit"></i>
+              </a>
+              <a class="item-control item-delete" title="Supprimer">
+                <i class="fas fa-trash"></i>
+              </a>
+            </div>
+          </li>
+          {{/each}}
+        </ol>
+      </div>
+
+      {{!-- Modules --}}
+      <div class="items-section">
+        <header class="items-header">
+          <h3>{{localize "UB.ItemTypes.module"}}</h3>
+          <a class="item-control item-create" data-type="module" title="Créer un module">
+            <i class="fas fa-plus"></i>
+          </a>
+        </header>
+        
+        <ol class="items-list">
+          {{#each modules as |item id|}}
+          <li class="item flexrow" data-item-id="{{item._id}}">
+            <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
+            <h4 class="item-name">{{item.name}}</h4>
+            <div class="module-stats">
+              <span class="stat">{{localize (concat "UB.Modules." item.system.typeModule)}}</span>
+              {{#if item.system.coutPA}}
+              <span class="stat">{{item.system.coutPA}} PA</span>
+              {{/if}}
+            </div>
+            <div class="item-controls">
+              <a class="item-control item-edit" title="Éditer">
+                <i class="fas fa-edit"></i>
+              </a>
+              <a class="item-control item-delete" title="Supprimer">
+                <i class="fas fa-trash"></i>
+              </a>
+            </div>
+          </li>
+          {{/each}}
+        </ol>
+      </div>
+
+      {{!-- Équipement général --}}
+      <div class="items-section">
+        <header class="items-header">
+          <h3>{{localize "UB.ItemTypes.equipement"}}</h3>
+          <a class="item-control item-create" data-type="equipement" title="Créer un équipement">
+            <i class="fas fa-plus"></i>
+          </a>
+        </header>
+        
+        <ol class="items-list">
+          {{#each gear as |item id|}}
+          <li class="item flexrow" data-item-id="{{item._id}}">
+            <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
+            <h4 class="item-name">{{item.name}}</h4>
+            <div class="item-quantity">
+              <input type="number" name="system.quantity" value="{{item.system.quantity}}" min="0" data-dtype="Number"/>
+            </div>
+            <div class="item-controls">
+              <a class="item-control item-edit" title="Éditer">
+                <i class="fas fa-edit"></i>
+              </a>
+              <a class="item-control item-delete" title="Supprimer">
+                <i class="fas fa-trash"></i>
+              </a>
+            </div>
+          </li>
+          {{/each}}
+        </ol>
+      </div>
+    </div>
+
+    {{!-- Capacités Tab --}}
+    <div class="tab capacites" data-group="primary" data-tab="capacites">
+      <div class="items-section">
+        <header class="items-header">
+          <h3>{{localize "UB.ItemTypes.capacite"}}</h3>
+          <a class="item-control item-create" data-type="capacite" title="Créer une capacité">
+            <i class="fas fa-plus"></i>
+          </a>
+        </header>
+        
+        <ol class="items-list">
+          {{#each capacites as |item id|}}
+          <li class="item flexrow" data-item-id="{{item._id}}">
+            <div class="item-image"><img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/></div>
+            <div class="item-name-block">
+              <h4 class="item-name">{{item.name}}</h4>
+              {{#if item.system.coutReputation}}
+              <span class="reputation-cost">({{item.system.coutReputation}} PR)</span>
+              {{/if}}
+              <p class="item-description">{{item.system.description}}</p>
+            </div>
+            <div class="item-controls">
+              <a class="item-control item-edit" title="Éditer">
+                <i class="fas fa-edit"></i>
+              </a>
+              <a class="item-control item-delete" title="Supprimer">
+                <i class="fas fa-trash"></i>
+              </a>
+            </div>
+          </li>
+          {{/each}}
+        </ol>
+      </div>
+    </div>
+
+    {{!-- Biographie Tab --}}
+    <div class="tab biographie" data-group="primary" data-tab="biographie">
+      <div class="biography">
+        <h3>Histoire personnelle</h3>
+        {{editor system.biographie target="system.biographie" button=true owner=owner editable=editable}}
+      </div>
+      
+      <div class="notes">
+        <h3>Notes</h3>
+        {{editor system.notes target="system.notes" button=true owner=owner editable=editable}}
+      </div>
+    </div>
+
+  </section>
+</form>

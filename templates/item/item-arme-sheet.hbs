@@ -1,0 +1,154 @@
+<form class="{{cssClass}} {{item.type}} flexcol" autocomplete="off">
+
+  {{!-- Sheet Header --}}
+  <header class="sheet-header">
+    <img class="item-img" src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
+    <div class="header-fields">
+      <h1 class="item-name"><input name="name" type="text" value="{{item.name}}" placeholder="Nom de l'arme"/></h1>
+      <div class="item-subtitle">
+        <input type="text" name="system.type" value="{{system.type}}" placeholder="Type d'arme" data-dtype="String"/>
+      </div>
+    </div>
+  </header>
+
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    <a class="item" data-tab="description">{{localize "UB.Tabs.description"}}</a>
+    <a class="item" data-tab="details">{{localize "UB.Tabs.details"}}</a>
+  </nav>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+
+    {{!-- Description Tab --}}
+    <div class="tab description" data-group="primary" data-tab="description">
+      <div class="item-description">
+        {{editor content target="system.description" button=true owner=owner editable=editable}}
+      </div>
+    </div>
+
+    {{!-- Details Tab --}}
+    <div class="tab details" data-group="primary" data-tab="details">
+      
+      {{!-- Statistiques principales --}}
+      <div class="weapon-stats-section">
+        <h3>Caractéristiques</h3>
+        
+        <div class="form-group">
+          <label for="system.degats">Dégâts:</label>
+          <input type="number" name="system.degats" value="{{system.degats}}" data-dtype="Number" min="1" max="9"/>
+        </div>
+
+        <div class="form-group">
+          <label for="system.typeDegats">Type de dégâts:</label>
+          <select name="system.typeDegats" data-dtype="String">
+            {{selectOptions typesDegats selected=system.typeDegats localize=true}}
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="system.portee">Portée:</label>
+          <select name="system.portee" data-dtype="String">
+            {{selectOptions portees selected=system.portee localize=true}}
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="system.attribut">Attribut pour l'attaque:</label>
+          <select name="system.attribut" data-dtype="String">
+            {{selectOptions attributs selected=system.attribut localize=true}}
+          </select>
+        </div>
+      </div>
+
+      {{!-- Modules --}}
+      <div class="weapon-modules-section">
+        <h3>Modules</h3>
+        
+        <div class="form-group">
+          <label for="system.slotsModules">Emplacements de modules:</label>
+          <input type="number" name="system.slotsModules" value="{{system.slotsModules}}" data-dtype="Number" min="0" max="3"/>
+        </div>
+
+        <div class="modules-list">
+          <label>Modules installés:</label>
+          <textarea name="system.modulesInstalled" rows="3" placeholder="Liste des modules installés">{{system.modulesInstalled}}</textarea>
+        </div>
+      </div>
+
+      {{!-- Propriétés spéciales --}}
+      <div class="weapon-properties-section">
+        <h3>Propriétés</h3>
+        
+        <div class="form-group">
+          <label>
+            <input type="checkbox" name="system.nonLetale" {{checked system.nonLetale}}/>
+            Non létale
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label>
+            <input type="checkbox" name="system.zoneEffet" {{checked system.zoneEffet}}/>
+            Zone d'effet
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label>
+            <input type="checkbox" name="system.automatique" {{checked system.automatique}}/>
+            Automatique
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label>
+            <input type="checkbox" name="system.deuxMains" {{checked system.deuxMains}}/>
+            À deux mains
+          </label>
+        </div>
+      </div>
+
+      {{!-- Prix et rareté --}}
+      <div class="weapon-economics-section">
+        <h3>Économie</h3>
+        
+        <div class="form-group">
+          <label for="system.prix">Prix (CG):</label>
+          <input type="number" name="system.prix" value="{{system.prix}}" data-dtype="Number" min="0"/>
+        </div>
+
+        <div class="form-group">
+          <label for="system.rarete">Rareté:</label>
+          <select name="system.rarete" data-dtype="String">
+            <option value="commune" {{selected "commune" system.rarete}}>Commune</option>
+            <option value="peu-commune" {{selected "peu-commune" system.rarete}}>Peu commune</option>
+            <option value="rare" {{selected "rare" system.rarete}}>Rare</option>
+            <option value="tres-rare" {{selected "tres-rare" system.rarete}}>Très rare</option>
+            <option value="legendaire" {{selected "legendaire" system.rarete}}>Légendaire</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="system.poids">Poids (kg):</label>
+          <input type="number" name="system.poids" value="{{system.poids}}" data-dtype="Number" min="0" step="0.1"/>
+        </div>
+      </div>
+
+      {{!-- Effets spéciaux --}}
+      <div class="weapon-effects-section">
+        <h3>Effets Spéciaux</h3>
+        <textarea name="system.effetsSpeciaux" rows="4" placeholder="Description des effets spéciaux">{{system.effetsSpeciaux}}</textarea>
+      </div>
+
+      {{!-- Actions de test --}}
+      <div class="weapon-actions-section">
+        <h3>Actions</h3>
+        <button type="button" class="rollable" data-roll-type="damage">
+          <i class="fas fa-dice-d6"></i> Lancer les dégâts
+        </button>
+      </div>
+    </div>
+
+  </section>
+</form>
